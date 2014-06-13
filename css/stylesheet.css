@@ -1,0 +1,115 @@
+.navbar-nav{
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    float:none;
+}
+
+
+#section1 {
+	background-image: url('../img/rust.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #222;
+	width: 100%;
+	height: 800px;
+	color: #fff;
+	padding-top: 60px;
+}
+#section2 {
+	background-image: url('../img/parchment.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #222;
+	width: 100%;
+	height: 800px;
+}
+#section3 {
+	background-image: url('../img/fire.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #222;
+	width: 100%;
+	height: 800px;
+}
+#section4 {
+	background-image: url('../img/roots.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #222;
+	width: 100%;
+	height: 800px;
+}
+
+
+
+.my-images {
+	max-width: 1600px;
+}
+.my-img {
+	width: 100%;
+}
+.row > div {
+	padding: 0px;
+}
+
+
+
+.shield {
+	height: 0%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	background-color: #000;
+}
+.shield-text {
+	/*height: 100%;*/
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 2;
+	color: #fff;
+	text-align: center;
+	font-size: 5vw;
+	/*display: none;*/
+}
+
+@media  (max-width: 768px) {
+	.shield-text {
+		font-size: 10vw;
+	}
+}
+
+#ocarina-img > .shield {
+	background-color: #da0;
+}
+#majora-img > .shield {
+	background-color: #a44;
+}
+#windwaker-img > .shield {
+	background-color: #28c;
+}
+#skyward-img > .shield {
+	background-color: #5c5;
+}
+
+
+
+
+
+#sliding_footer {
+    width:100%;
+    height:50px;
+    background-color:#222;
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index: 2;
+    color: #fff;
+    font-size: 2em;
+    padding-left: 20px;
+    padding-right: 20px;
+}
