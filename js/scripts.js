@@ -75,6 +75,8 @@ $(window).on('scroll',function(){
 // 	}
 // );
 
+
+
 //pull down image shield on hover
 $('.shielded_img').hover(
 	function() {
@@ -86,6 +88,30 @@ $('.shielded_img').hover(
 		$(this).children('.shield-text').hide();//.stop().animate({height:'0%'}, 500);
 	}
 );
+
+
+
+//some setup
+$(function(){
+    //slidedowns start out slosed
+    $('.slidedown').data('open','false');
+    //move slidedowns to after the row
+    $('.my-images').children('.row').append( $('.slidedown') );
+});
+
+
+
+$('.shielded_img').on( 'click', function() {
+  var $slide = $(this).parent().children('.slidedown')
+  if( $slide.data(open) == 'false'){
+    $slide.stop().animate({height:'600px'}, 300);
+    $slide.data('open','true');
+  }
+  else {
+    $slide.stop().animate({height:'0px'}, 300);
+    $slide.data('open','false');
+  }
+});
 
 
 
@@ -107,7 +133,7 @@ $(window).scroll(function(){
     } else {
         if ($nav.data('size') == 'small') {
             $nav.data('size','big').stop().animate({
-                height:'300px'
+                height:'100px'
             }, 600);
         }
     }
@@ -117,14 +143,14 @@ $(window).scroll(function(){
 $('#sliding_footer').hover(
 	function() {
 		var $nav = $('#sliding_footer');
-		$nav.data('size','big').stop().animate({
-	                height:'300px'
+		$nav.stop().animate({
+	                height:'100px'
 	}, 600);},
 
 	function() {
 		if (($('body').scrollTop() + $(window).height()) < $(document).height()) {
 			var $nav = $('#sliding_footer');
-			$nav.data('size','small').stop().animate({
+			$nav.stop().animate({
 		                height:'50px'
 		    }, 600);
 		}
