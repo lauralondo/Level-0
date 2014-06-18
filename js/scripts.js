@@ -96,19 +96,21 @@ $(function(){
     //slidedowns start out slosed
     $('.slidedown').data('open','false');
     //move slidedowns to after the row
-    $('.my-images').children('.row').append( $('.slidedown') );
+    // $('.my-images').children('.row').append( $('.slidedown') );
 });
 
 
 
 $('.shielded_img').on( 'click', function() {
-  var $slide = $(this).parent().children('.slidedown')
-  if( $slide.data(open) == 'false'){
-    $slide.stop().animate({height:'600px'}, 300);
+  var $slide = $(this).children('.slidedown')
+  $('.slidedown').stop().animate({height:'0px', width:'0px'}, 300).data('open','false');;
+
+  if( $slide.data('open') == 'false'){
+    $slide.stop().animate({height:'600px', width:'1200px'}, 300);
     $slide.data('open','true');
   }
   else {
-    $slide.stop().animate({height:'0px'}, 300);
+    $slide.stop().animate({height:'0px', width:'0px'}, 300);
     $slide.data('open','false');
   }
 });
@@ -158,6 +160,12 @@ $(window).scroll(function(){
 // 	}
 // );
 
+var slidedownPosition = function() {
+  var posTop = $('.my-images').offset().top + $('.my-images').height;
+  var posLeft = $('.my-images').offset().left;
+  $('.slidedown').offset({left: posLeft, top: posTop});
+}
+
 var centerTitle = function() {
   // var centerSpot = (($(window).width()/2) - ($('#title-text').width()/2)) + 'px');
   var centerSpot = ($(window).width()/2) - ($('#title-text').width()/2) + 'px';
@@ -165,7 +173,10 @@ var centerTitle = function() {
 };
 
 
-$(window).resize(centerTitle);
+$(window).resize( function() {
+  centerTitle();
+  slidedownPosition();
+});
 
 
 
@@ -173,6 +184,7 @@ $(window).resize(centerTitle);
 //on document load
 jQuery(document).ready(function($) {
   centerTitle();
+  slidedownPosition();
 
 	$(".scroll").click(function(event){
 		event.preventDefault();
