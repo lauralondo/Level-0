@@ -12,18 +12,16 @@
 	/*background-repeat: no-repeat;*/
 	background-color: #20abdf;
 	width: 100%;
-	/*height: 100%;*/
 	color: #fff;
 	margin-top: 50px;
-	/*padding-bottom: 50px;*/
 }
 #section2 {
 	/*background-image: url('../img/parchment.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;*/
-	background-color: #222;
+	background-color: #ccc;
 	width: 100%;
-	/*height: 800px;*/
+	height: 800px;
 }
 #section3 {
 	/*background-image: url('../img/fire.jpg');
@@ -31,15 +29,15 @@
 	background-repeat: no-repeat;*/
 	background-color: #222;
 	width: 100%;
-	height: 600px;
+	/*height: 600px;*/
 }
 #section4 {
 	/*background-image: url('../img/roots.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;*/
-	background-color: #222;
+	background-color: #ccc;
 	width: 100%;
-	/*height: 800px;*/
+	height: 800px;
 }
 .slidedown {
 	width: 100%;
@@ -48,7 +46,22 @@
 }
 
 #tablet-img {
-	width: 100%;
+	position: relative;
+	left: 50%;
+	min-height: 687px;
+	min-width: 1200px;
+}
+#title-text {
+	position: absolute;
+	z-index: 2;
+	top: 35%;
+	border: solid 2px #fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 72pt;
+	white-space: nowrap;
 }
 .my-images {
 	/*max-width: 1200px;*/
@@ -63,10 +76,12 @@
 
 #sections {
 	max-width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
 }
 
 .arrow-band {
-	position: relative;
+	position: relative;  /*  WHY WON'T YOU ACCEPT YOUR PARENT'S WIDTH!!!?!??! */
 	top: -4.5vw;
 	font-size: 0; /* stupidity. inline elements are forced to have
 					spaces between them, so, we just made the
@@ -97,8 +112,14 @@
 .arrow-content {
 	background-color: #20abdf;
 	color: #fff;
-	height: 200px;
+	/*height: 200px;*/
+	margin-top: -3vw;
+	font-size: 24pt;
+	font-weight: 200;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding-bottom: 20px;
 }
+
 
 
 .shield {
@@ -134,9 +155,9 @@
 	.shield-text {
 		font-size: 32pt;
 	}
-	#sections {
+	/*#sections {
 		max-width: 700px;
-	}
+	}*/
 }
 @media (max-width: 400px) {
 	.shield-text {
@@ -164,7 +185,7 @@
 
 #sliding_footer {
     width:100%;
-    height:50px;
+    height:0px;
     background-color:#222;
     position:fixed;
     bottom:0;
