@@ -62,6 +62,17 @@ $(window).on('scroll',function(){
 });
 
 
+//TODO: resize stuff, handle opacity animations, and text
+var iconPositions = function() {
+  var cloudTop = $('#cloud-img').offset().top;
+  var cloudLeft = $('#cloud-img').offset().left;
+  $('#icon-google').offset({left: cloudLeft + 140, top: cloudTop + 130});
+  $('#icon-microsoft').offset({left: cloudLeft + 200, top: cloudTop + 300});
+  $('#icon-playstation').offset({left: cloudLeft + 300, top: cloudTop + 200});
+  $('#icon-steam').offset({left: cloudLeft + 30, top: cloudTop + 210});
+  $('#icon-nintendo').offset({left: cloudLeft + 400, top: cloudTop + 50});
+  $('#icon-apple').offset({left: cloudLeft + 450, top: cloudTop + 250});
+}
 
 
 
@@ -97,21 +108,26 @@ $(function(){
     $('.slidedown').data('open','false');
     //move slidedowns to after the row
     // $('.my-images').children('.row').append( $('.slidedown') );
+    $('.my-images').append($('<div/>').addClass('slidedown-spacer'));
 });
 
 
 
 $('.shielded_img').on( 'click', function() {
   var $slide = $(this).children('.slidedown')
-  $('.slidedown').stop().animate({height:'0px', width:'0px'}, 300).data('open','false');;
+
+  //colapses all other slidedowns
+  $('.slidedown').not($slide).stop().animate({height:'0px'/*, width:'0px'*/}, 300).data('open','false');;
 
   if( $slide.data('open') == 'false'){
-    $slide.stop().animate({height:'600px', width:'1200px'}, 300);
+    $slide.stop().animate({height:'600px'/*, width:'1200px'*/}, 300);
     $slide.data('open','true');
+    $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
   }
   else {
-    $slide.stop().animate({height:'0px', width:'0px'}, 300);
+    $slide.stop().animate({height:'0px'/*, width:'0px'*/}, 300);
     $slide.data('open','false');
+    $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
   }
 });
 
@@ -161,8 +177,9 @@ $(window).scroll(function(){
 // );
 
 var slidedownPosition = function() {
-  var posTop = $('.my-images').offset().top + $('.my-images').height;
-  var posLeft = $('.my-images').offset().left;
+  var $row = $('.my-images').children('.row');
+  var posTop = $row.offset().top + $row.height();
+  var posLeft = $row.offset().left;
   $('.slidedown').offset({left: posLeft, top: posTop});
 }
 
@@ -185,6 +202,7 @@ $(window).resize( function() {
 jQuery(document).ready(function($) {
   centerTitle();
   slidedownPosition();
+  iconPositions();
 
 	$(".scroll").click(function(event){
 		event.preventDefault();
