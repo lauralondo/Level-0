@@ -193,6 +193,7 @@ var centerTitle = function() {
 $(window).resize( function() {
   centerTitle();
   slidedownPosition();
+  iconPositions();
 });
 
 
