@@ -134,6 +134,7 @@ $('.shielded_img').on( 'click', function() {
 
 
 
+
 //start the footer as collapsed
 $(function(){
     $('#sliding_footer').data('size','small');
@@ -198,6 +199,35 @@ $(window).resize( function() {
 
 
 
+// when a lightbox-trigger class element is clicked,
+// a wild lightbox appears!!
+$('.lightbox-trigger').click( function(e) {
+  e.preventDefault();
+  var image_href = $(this).attr('href');
+  if( $('#lightbox').length > 0 ) {
+    console.log("in if");
+    $('#content').html('<img src="' + image_href + '" />');
+    $('#lightbox').show();
+  }
+  else {
+    console.log("in else");
+    var lightbox =
+    '<div id="lightbox">' +
+      '<p> click to close </p>' +
+      '<div id="content">' +
+        '<img src="' + image_href + '" />' +
+      '</div>' +
+    '</div>';
+
+    $('body').append(lightbox);
+  }
+});
+
+//hide the lightbox when clicked on. Its super effective!!
+$('body').on('click', '#lightbox', function() {
+  console.log("lighbox on click");
+  $('#lightbox').hide();
+});
 
 //on document load
 jQuery(document).ready(function($) {
@@ -215,5 +245,7 @@ jQuery(document).ready(function($) {
   var imgwidth = (-tabletImg.width()/2) + 'px';
   console.log(imgwidth);
   tabletImg.css('margin-left', imgwidth);
+
+
 });
 
