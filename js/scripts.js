@@ -112,9 +112,8 @@ $(function(){
 });
 
 
-
-$('.shielded_img').on( 'click', function() {
-  var $slide = $(this).children('.slidedown')
+$('.invis-shield').on( 'click', function() {
+  var $slide = $(this).parent().children('.slidedown');
 
   //colapses all other slidedowns
   $('.slidedown').not($slide).stop().animate({height:'0px'/*, width:'0px'*/}, 300).data('open','false');;
@@ -122,14 +121,32 @@ $('.shielded_img').on( 'click', function() {
   if( $slide.data('open') == 'false'){
     $slide.stop().animate({height:'600px'/*, width:'1200px'*/}, 300);
     $slide.data('open','true');
-    $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
+    $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
   }
   else {
     $slide.stop().animate({height:'0px'/*, width:'0px'*/}, 300);
     $slide.data('open','false');
-    $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
+    $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
   }
 });
+
+// $('.shielded_img').on( 'click', function() {
+//   var $slide = $(this).children('.slidedown')
+
+//   //colapses all other slidedowns
+//   $('.slidedown').not($slide).stop().animate({height:'0px'/*, width:'0px'*/}, 300).data('open','false');;
+
+//   if( $slide.data('open') == 'false'){
+//     $slide.stop().animate({height:'600px'/*, width:'1200px'*/}, 300);
+//     $slide.data('open','true');
+//     $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
+//   }
+//   else {
+//     $slide.stop().animate({height:'0px'/*, width:'0px'*/}, 300);
+//     $slide.data('open','false');
+//     $(this).parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
+//   }
+// });
 
 
 
@@ -198,24 +215,25 @@ $(window).resize( function() {
 });
 
 
-
 // when a lightbox-trigger class element is clicked,
 // a wild lightbox appears!!
 $('.lightbox-trigger').click( function(e) {
   e.preventDefault();
-  var image_href = $(this).attr('href');
-  if( $('#lightbox').length > 0 ) {
+  var media = $(this).attr('data');
+  if( $('#lightbox').length > 0 ) {  //if lightbox is open
     console.log("in if");
-    $('#content').html('<img src="' + image_href + '" />');
+    $('body').addClass('dissable-scroll');
+    $('#content').html(media);
     $('#lightbox').show();
   }
-  else {
+  else { //else lightbox is closed, create a new one
     console.log("in else");
+    $('body').addClass('dissable-scroll');
     var lightbox =
     '<div id="lightbox">' +
       '<p> click to close </p>' +
       '<div id="content">' +
-        '<img src="' + image_href + '" />' +
+        media +
       '</div>' +
     '</div>';
 
@@ -223,11 +241,43 @@ $('.lightbox-trigger').click( function(e) {
   }
 });
 
+// // when a lightbox-trigger class element is clicked,
+// // a wild lightbox appears!!
+// $('.lightbox-trigger').click( function(e) {
+//   e.preventDefault();
+//   var image_href = $(this).attr('href');
+//   if( $('#lightbox').length > 0 ) {  //if lightbox is open
+//     console.log("in if");
+//     $('#content').html('<img src="' + image_href + '" />');
+//     $('#lightbox').show();
+//   }
+//   else { //else lightbox is closed, create a new one
+//     console.log("in else");
+//     var lightbox =
+//     '<div id="lightbox">' +
+//       '<p> click to close </p>' +
+//       '<div id="content">' +
+//         '<img src="' + image_href + '" />' +
+//       '</div>' +
+//     '</div>';
+
+//     $('body').append(lightbox);
+//   }
+// });
+
+
+
+
 //hide the lightbox when clicked on. Its super effective!!
 $('body').on('click', '#lightbox', function() {
   console.log("lighbox on click");
   $('#lightbox').hide();
+  $('#content').html("");
+  $('body').removeClass('dissable-scroll')
 });
+
+
+
 
 //on document load
 jQuery(document).ready(function($) {
