@@ -199,6 +199,10 @@ var slidedownPosition = function() {
   var posTop = $row.offset().top + $row.height();
   var posLeft = $row.offset().left;
   $('.slidedown').offset({left: posLeft, top: posTop});
+
+  // $('.slidedown').width($('.slidedown').parent().parent().parent().width);
+  var rowWidth = $('.slidedown').parent().parent().width();
+  $('.slidedown').width(rowWidth);
 }
 
 var centerTitle = function() {
@@ -212,6 +216,7 @@ $(window).resize( function() {
   centerTitle();
   slidedownPosition();
   iconPositions();
+
 });
 
 

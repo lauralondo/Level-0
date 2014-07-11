@@ -28,43 +28,104 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
-.video-thumbnail {
-	width: 200px;
-	height: 100px;
-	margin: 0 0;
-	position: relative;
+
+
+
+
+
+
+.thumbscroller {
+	/*display: table;*/
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	/*width: 70%;*/
 	color: #fff;
-}
-.video-thumbnail:hover  {
-	color: #bbb;
+	/*vertical-align: center;*/
 }
 
 
+.thumbscroller-thumbs {
+	overflow: scroll;
+	white-space: nowrap;
+	/*width: 100%;*/
+	display: table-cell;
+}
+.rowMiddle::-webkit-scrollbar { 
+    display: none; 
+}
 
-.video-thumbnail-img {
+
+
+
+
+.rowMiddle {
+	display: inline-block;
+	/*height: 100px;*/
+	border: 1px dotted black;
+	width: 70%;
+	color: #eee;
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: scroll;
+}
+
+.rowLeft {
+	display: inline-block;
+	width: 40px;
 	height: 100%;
-	width: 100%;
+	border: 1px solid red;
+	/*position: absolute;*/
+	/*left: 0;*/
+	/*top: 0;*/
 }
 
-.video-shield {
-	background-color: #000;
-	width: 100%;
+.rowRight {
+	display: inline-block;
+	width: 40px;
 	height: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 3;
-	opacity: 0.5;
-	text-align: center;
-	/*cursor: pointer;*/
+	border: 1px solid green;
+	/*position: relative;*/
+	/*top: 50%;*/
 }
-.video-thumbnail .glyphicon {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	z-index: 5;
-	margin: 0 auto;
-}
+
+
+
+
+/* video thumbnail */
+	.video-thumbnail {
+		width: 200px;
+		height: 100px;
+		margin: 0 0;
+		position: relative;
+		color: #fff;
+	}
+	.video-thumbnail:hover  {
+		color: #bbb;
+	}
+	.video-thumbnail-img {
+		height: 100%;
+		width: 100%;
+	}
+	.video-shield {
+		background-color: #000;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 3;
+		opacity: 0.5;
+		text-align: center;
+		/*cursor: pointer;*/
+	}
+	.video-thumbnail .glyphicon {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		z-index: 5;
+		margin: 0 auto;
+	}
 
 #lightbox {
 	position: fixed;
@@ -76,7 +137,6 @@ body {
 
 	z-index: 20;
 }
-
 #lightbox #content > * {
 	position: absolute;
 	top: 0;
@@ -372,11 +432,12 @@ body {
 
 
 	.slidedown {
-		width: 1200px;
+		/*width: 1200px;*/
 		height: 0%;
 		background-color: #222;
 		overflow: hidden;
 		position: absolute;
+		width: 100%;
 	}
 	.slidedown-img {
 		width: 100%;
