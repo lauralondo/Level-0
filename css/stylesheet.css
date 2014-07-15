@@ -34,60 +34,6 @@ body {
 
 
 
-.thumbscroller {
-	/*display: table;*/
-	position: absolute;
-	left: 0px;
-	bottom: 0px;
-	/*width: 70%;*/
-	color: #fff;
-	/*vertical-align: center;*/
-}
-
-
-.thumbscroller-thumbs {
-	overflow: scroll;
-	white-space: nowrap;
-	/*width: 100%;*/
-	display: table-cell;
-}
-.rowMiddle::-webkit-scrollbar { 
-    display: none; 
-}
-
-
-
-
-
-.rowMiddle {
-	display: inline-block;
-	/*height: 100px;*/
-	border: 1px dotted black;
-	width: 70%;
-	color: #eee;
-	white-space: nowrap;
-	overflow-y: hidden;
-	overflow-x: scroll;
-}
-
-.rowLeft {
-	display: inline-block;
-	width: 40px;
-	height: 100%;
-	border: 1px solid red;
-	/*position: absolute;*/
-	/*left: 0;*/
-	/*top: 0;*/
-}
-
-.rowRight {
-	display: inline-block;
-	width: 40px;
-	height: 100%;
-	border: 1px solid green;
-	/*position: relative;*/
-	/*top: 50%;*/
-}
 
 
 
@@ -97,56 +43,71 @@ body {
 
 
 
-.scroll-thing {
-	border: 1px solid blue;
-	font-size: 0;	/* remove spaces between inline div elements */
-}
-.side-arrow {
-	display: inline-block; /* allows divs to align horizontally */
-	border: 1px solid green;
-	height: 200px;
-	width: 1.1em;	/* give a width to cover the chevron width*/
-	position: relative;
-	vertical-align: top; /* gets rid of hanger space under 
-							inline-block elements*/
-	background-color: #f88;
-	color: #666;
-	font-size: 24pt;
-}
-.side-arrow > .glyphicon {
-	position: absolute;	/* position the chevrons manually */
-	top: 50%;	/* start halfway from the top of its container */
-	margin-top: -0.5em;	/* move it back up by ~ half the 
-						   chevron's height */
-}
-.side-arrow:hover {
-	color: #fff;
-}
+/* image thumbnail scrollbar */
+	.scroll-thing {
+		height: 100px;
+		font-size: 0;	/* remove spaces between inline div elements */
+		position: relative;
+	}
+	.side-arrow {
+		display: inline-block; /* allows divs to align horizontally */
+		height: 100px;
+		width: 1.1em;	/* give a width to cover the chevron width*/
+		position: relative;
+		vertical-align: top; /* gets rid of hanger space under 
+								inline-block elements*/
+		background-color: #fff;
+		color: #aaa;
+		font-size: 24pt;
+	}
+	.side-arrow > .glyphicon {
+		position: absolute;	/* position the chevrons manually */
+		top: 50%;	/* start halfway from the top of its container */
+		margin-top: -0.5em;	/* move it back up by ~ half the 
+							   chevron's height */
+	}
+	.side-arrow:hover {
+		color: #222;
+	}
 
-.middle-scroll {
-	display: inline-block;
-	width: 500px;
-	overflow: scroll;
-	white-space: nowrap;
-	font-size: 24pt;
-	vertical-align: top; /* gets rid of hanger space under 
-							inline-block elements*/
-}
-.middle-scroll::-webkit-scrollbar { /* hide the scrollbar */
-    display: none; 
-}
-
-
-
-
-
+	.middle-scroll {
+		display: inline-block;
+		height: 100%;
+		width: 525px;
+		overflow: scroll;
+		white-space: nowrap;
+		font-size: 24pt;
+		vertical-align: top; /* gets rid of hanger space under 
+								inline-block elements*/
+	}
+	.middle-scroll::-webkit-scrollbar { /* hide the scrollbar */
+	    display: none; 
+	}
+	
+	.thumb-scroller-forcefield {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 3;
+		cursor: pointer;
+	}
+	.middle-scroll > div {
+		display: inline-block;
+		height: 100%;
+		position: relative;
+	} 
+	.middle-scroll > div > img {
+		height: 100%;
+	}
 
 
 
 /* video thumbnail */
 	.video-thumbnail {
-		width: 200px;
-		height: 100px;
+		/*width: auto;*/
+		height: 100%;
 		margin: 0 0;
 		position: relative;
 		color: #fff;
@@ -156,7 +117,7 @@ body {
 	}
 	.video-thumbnail-img {
 		height: 100%;
-		width: 100%;
+		/*width: 100%;*/
 	}
 	.video-shield {
 		background-color: #000;
@@ -167,16 +128,27 @@ body {
 		left: 0px;
 		z-index: 3;
 		opacity: 0.5;
-		text-align: center;
-		/*cursor: pointer;*/
+		/*text-align: center;*/
+		cursor: pointer;
 	}
 	.video-thumbnail .glyphicon {
 		position: absolute;
-		left: 0px;
-		top: 0px;
+		left: 50%;
+		top: 50%;
 		z-index: 5;
-		margin: 0 auto;
+		margin: -0.5em -0.5em;
 	}
+
+
+
+/* Media Player */
+.media-player {
+	height: 400px;
+	width: 100%;
+	/*background-color: #f00;*/
+}
+
+
 
 #lightbox {
 	position: fixed;
@@ -485,7 +457,7 @@ body {
 	.slidedown {
 		/*width: 1200px;*/
 		height: 0%;
-		background-color: #222;
+		background-color: #ddd;
 		overflow: hidden;
 		position: absolute;
 		width: 100%;
@@ -505,6 +477,15 @@ body {
 		padding-bottom: 6px;
 		color: #fff;
 
+	}
+
+	.slidedown-content {
+		height: 500px ;
+		width: 600px;
+		margin: 30px 30px;
+		background-color: #fff;
+		/*border: solid 2px #888;*/
+		box-shadow: 5px 5px 5px #888;
 	}
 
 
