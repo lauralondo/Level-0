@@ -92,6 +92,57 @@ body {
 
 
 
+
+
+
+
+
+.scroll-thing {
+	border: 1px solid blue;
+	font-size: 0;	/* remove spaces between inline div elements */
+}
+.side-arrow {
+	display: inline-block; /* allows divs to align horizontally */
+	border: 1px solid green;
+	height: 200px;
+	width: 1.1em;	/* give a width to cover the chevron width*/
+	position: relative;
+	vertical-align: top; /* gets rid of hanger space under 
+							inline-block elements*/
+	background-color: #f88;
+	color: #666;
+	font-size: 24pt;
+}
+.side-arrow > .glyphicon {
+	position: absolute;	/* position the chevrons manually */
+	top: 50%;	/* start halfway from the top of its container */
+	margin-top: -0.5em;	/* move it back up by ~ half the 
+						   chevron's height */
+}
+.side-arrow:hover {
+	color: #fff;
+}
+
+.middle-scroll {
+	display: inline-block;
+	width: 500px;
+	overflow: scroll;
+	white-space: nowrap;
+	font-size: 24pt;
+	vertical-align: top; /* gets rid of hanger space under 
+							inline-block elements*/
+}
+.middle-scroll::-webkit-scrollbar { /* hide the scrollbar */
+    display: none; 
+}
+
+
+
+
+
+
+
+
 /* video thumbnail */
 	.video-thumbnail {
 		width: 200px;
