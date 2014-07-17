@@ -86,36 +86,55 @@ $(function(){
 });
 
 
+  var createMediaPlayer = function(mediaBox) {
+    //create media player
+    console.log(mediaBox);
+    var $mediaPlayer = mediaBox.children('.slidedown-content').children('.media-player');
+    var $firstMedia = mediaBox.children('.slidedown-content').children('.scroll-thing').children('.middle-scroll').children().first().children().first();
+    if ( $firstMedia.is('div')) {
+      console.log("its a videao");
+      var videoID = $firstMedia.attr('data');
+      //create video thumbnail
+      $mediaPlayer.html(
+        "<div class='video-thumbnail' data='" + videoID + "'>" + 
+          "<img class='video-thumbnail-img' src='http://img.youtube.com/vi/" + videoID + "/0.jpg' />" + 
+          "<div class='video-shield'></div>" + 
+          "<div class='glyphicon glyphicon-play'></div>" + 
+        "</div>");
+    }
+    else if ($firstMedia.is('img')) {
+      console.log('i gots myself a picter');
+      $mediaPlayer.html($firstMedia.attr('data'));
+    }
+    else {
+      console.log("it aint notin")
+    }
+  };
+
+
+
+
 $('.invis-shield').on( 'click', function() {
   var $slide = $(this).parent().children('.slidedown');
 
   //colapses all other slidedowns
-  $('.slidedown').not($slide).stop().animate({height:'0px'/*, width:'0px'*/}, 300).data('open','false');;
+  $('.slidedown').not($slide).stop().animate({height:'0px'}, 300).data('open','false');;
 
   if( $slide.data('open') == 'false'){
-    $slide.stop().animate({height:'600px'/*, width:'1200px'*/}, 300);
+    $slide.stop().animate({height:'600px'}, 300, createMediaPlayer($slide));
     $slide.data('open','true');
     $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
   }
   else {
-    $slide.stop().animate({height:'0px'/*, width:'0px'*/}, 300);
+    $slide.stop().animate({height:'0px'}, 300);
     $slide.data('open','false');
+    var $mediaPlayer = $slide.children('.slidedown-content').children('.media-player');
+    $mediaPlayer.html("");
     $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
+    
   }
 
-  var $mediaPlayer = $slide.children('.slidedown-content').children('.media-player');
-  var $firstMedia = $slide.children('.slidedown-content').children('.scroll-thing').children('.middle-scroll').children().first().children().first();
-  if ( $firstMedia.is('div')) {
-    console.log("its a videao");
-    $mediaPlayer.html($firstMedia.attr('data'));
-  }
-  else if ($firstMedia.is('img')) {
-    console.log('i gots myself a picter');
-    $mediaPlayer.html($firstMedia.attr('data'));
-  }
-  else {
-    console.log("it aint notin")
-  }
+
 
 });
 
@@ -134,10 +153,19 @@ $('.right-side-arrow').on('click', function() {
   });
 });
 
+$('.media-player').on('click', function() {
+  console.log("clicked on mediaplayer");
+});
+$('.glyphicon').on('click', function() {
+  console.log("clicked on glyphicon");
+});
 
 $('.video-thumbnail').on('click', function(e) {
+  console.log("cliked on video thumnail");
   e.preventDefault();
-  var media = $(this).attr('data');
+  var media = "<iframe width='100%' height='100%' src='http://www.youtube.com/embed/" 
+              + $(this).attr('data')
+              + "?rel=0&autohide=1&controls=0&showinfo=0&autoplay=1' frameborder='0' allowfullscreen></iframe>";
   console.log($(this));
   console.log(media);
   console.log($(this).parent().parent().parent().parent().children('.media-player'));

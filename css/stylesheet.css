@@ -138,13 +138,16 @@ body {
 		z-index: 5;
 		margin: -0.5em -0.5em;
 	}
-
+	.youtube-preview {
+		position: relative;
+	}
 
 
 /* Media Player */
 .media-player {
 	height: 400px;
 	width: 100%;
+	position: relative;
 	/*background-color: #f00;*/
 }
 
