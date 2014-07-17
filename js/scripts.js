@@ -104,7 +104,7 @@ $(function(){
     }
     else if ($firstMedia.is('img')) {
       console.log('i gots myself a picter');
-      $mediaPlayer.html($firstMedia.attr('data'));
+      $mediaPlayer.html( $firstMedia.attr('data') );
     }
     else {
       console.log("it aint notin")
@@ -160,7 +160,10 @@ $('.glyphicon').on('click', function() {
   console.log("clicked on glyphicon");
 });
 
-$('.video-thumbnail').on('click', function(e) {
+
+
+
+$(document).on('click', ".video-thumbnail", function(e) {
   console.log("cliked on video thumnail");
   e.preventDefault();
   var media = "<iframe width='100%' height='100%' src='http://www.youtube.com/embed/" 
@@ -168,9 +171,21 @@ $('.video-thumbnail').on('click', function(e) {
               + "?rel=0&autohide=1&controls=0&showinfo=0&autoplay=1' frameborder='0' allowfullscreen></iframe>";
   console.log($(this));
   console.log(media);
-  console.log($(this).parent().parent().parent().parent().children('.media-player'));
-  $(this).parent().parent().parent().parent().children('.media-player').html(media);
+  console.log("this.parent")
+  console.log($(this).parent());
+  if ($(this).parent().is('.media-player')) {
+    console.log("my mother is a media player! :D ")
+    $(this).parent().html(media);
+  }
+  else {
+    console.log("my mama is a lama")
+    console.log($(this).parent().parent().parent().parent().children('.media-player'));
+    $(this).parent().parent().parent().parent().children('.media-player').html(media);
+  }
 });
+
+
+
 
 
 $('.thumb-scroller-forcefield').on('click', function(e) {
