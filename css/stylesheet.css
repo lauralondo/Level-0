@@ -32,7 +32,47 @@ body {
 
 
 
+/* basic div circle */
+.circle {
+	height: 100px;
+	width: 100px;
+    border-radius: 50px;
+	background-color: #5f5;
+}
+.circle1 {
+	display: inline-table;
+	background-color: #55d;
+}
+.circle2 {
+	display: inline-table;
+	background-color: #5d5;
+}
+.circle3 {
+	display: inline-table;
+	background-color: #d55;
+}
+.circle4 {
+	display: inline-table;
+	background-color: #5dd;
+}
+.inner-circle {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
 
+/*vertically and horizontally center an object
+its container must be non-statically positioned 
+and given an explicit height and width (since the 
+object does not take up space in its container)*/
+	.center {
+		position: absolute;
+	    top:0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	}
 
 
 
@@ -73,7 +113,7 @@ body {
 	.middle-scroll {
 		display: inline-block;
 		height: 100%;
-		width: 525px;
+		width: 85%;
 		overflow: scroll;
 		white-space: nowrap;
 		font-size: 24pt;
@@ -103,7 +143,6 @@ body {
 	}
 
 
-
 /* video thumbnail */
 	.video-thumbnail {
 		/*width: auto;*/
@@ -119,6 +158,31 @@ body {
 		height: 100%;
 		/*width: 100%;*/
 	}
+
+	/*Stuff Paul Added*/
+	.mediaplayer-video-thumbnail {
+		width: auto;
+		height: 100%;
+		margin: 0 0;
+		position: relative;
+		background-color: #000;
+		color: #fff;
+
+	}
+	.mediaplayer-video-thumbnail-img {
+		height: auto;
+		width: auto;
+		max-height: 100%;
+		max-width: 100%;
+		position: absolute;
+    	top:0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	}
+
+
 	.video-shield {
 		background-color: #000;
 		width: 100%;
@@ -144,44 +208,48 @@ body {
 
 
 /* Media Player */
-.media-player {
-	height: 400px;
-	width: 100%;
-	position: relative;
-	/*background-color: #f00;*/
-}
-.media-player > * {
-	max-width: 100%;
-	max-height: 100%;
-	position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
+	.media-player {
+		height: 400px;
+		width: 100%;
+		position: relative;
+		/*background-color: #f00;*/
+	}
+	.media-player > * {
+		max-width: 100%;
+		max-height: 100%;
+		position: absolute;
+	    top:0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	}
+
+
+/* Lightbox */
+	#lightbox {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+
+		z-index: 20;
+	}
+	#lightbox #content > * {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		max-width: 80%;
+		margin: auto;
+	}
 
 
 
-#lightbox {
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #000;
 
-	z-index: 20;
-}
-#lightbox #content > * {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	max-width: 80%;
-	margin: auto;
-}
 
 
 
@@ -492,13 +560,43 @@ body {
 
 	}
 
-	.slidedown-content {
+	.media-box {
 		height: 500px ;
-		width: 600px;
+		/*width: 100%;*/
 		margin: 30px 30px;
 		background-color: #fff;
-		/*border: solid 2px #888;*/
 		box-shadow: 5px 5px 5px #888;
+		position: relative;
+	}
+
+	.elevator-pitch {
+		height: 235px;
+		/*width: 100%;*/
+		margin: 30px 30px;
+		background-color: #fff;
+		box-shadow: 5px 5px 5px #888;
+	}
+
+	.stores {
+		height: 235px;
+		/*width: 100%;*/
+		margin: 30px 30px;
+		background-color: #fff;
+		box-shadow: 5px 5px 5px #888;
+	}
+
+	@media (min-width: 980px) {
+		.elevator-pitch {
+			margin-left: 0px;
+			padding: 0.5em;
+			padding-top: 0.2em;
+		} 
+		.stores {
+			margin-left: 0px;
+		}
+		.media-box {
+			margin-right: 0px;
+		}
 	}
 
 

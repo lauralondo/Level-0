@@ -89,15 +89,15 @@ $(function(){
   var createMediaPlayer = function(mediaBox) {
     //create media player
     console.log(mediaBox);
-    var $mediaPlayer = mediaBox.children('.slidedown-content').children('.media-player');
-    var $firstMedia = mediaBox.children('.slidedown-content').children('.scroll-thing').children('.middle-scroll').children().first().children().first();
+    var $mediaPlayer = mediaBox.children('.row').children('.column').children('.media-box').children('.media-player');
+    var $firstMedia = mediaBox.children('.row').children('.column').children('.media-box').children('.scroll-thing').children('.middle-scroll').children().first().children().first();
     if ( $firstMedia.is('div')) {
       console.log("its a videao");
       var videoID = $firstMedia.attr('data');
       //create video thumbnail
       $mediaPlayer.html(
-        "<div class='video-thumbnail' data='" + videoID + "'>" + 
-          "<img class='video-thumbnail-img' src='http://img.youtube.com/vi/" + videoID + "/0.jpg' />" + 
+        "<div class='video-thumbnail mediaplayer-video-thumbnail' data='" + videoID + "'>" + 
+          "<img class='video-thumbnail-img mediaplayer-video-thumbnail-img' src='http://img.youtube.com/vi/" + videoID + "/0.jpg' />" + 
           "<div class='video-shield'></div>" + 
           "<div class='glyphicon glyphicon-play'></div>" + 
         "</div>");
@@ -118,17 +118,24 @@ $('.invis-shield').on( 'click', function() {
   var $slide = $(this).parent().children('.slidedown');
 
   //colapses all other slidedowns
-  $('.slidedown').not($slide).stop().animate({height:'0px'}, 300).data('open','false');;
-
-  if( $slide.data('open') == 'false'){
-    $slide.stop().animate({height:'600px'}, 300, createMediaPlayer($slide));
+  $('.slidedown').not($slide).stop().animate({height:'0px'}, 300).data('open','false');
+  
+  if( $slide.data('open') == 'false'){ //if slidedown is not open
+    var slideHeight;
+    if($(window).width() >= 980) {
+      slideHeight = 560;
+    }
+    else {
+      slideHeight = 1120;
+    }
+    $slide.stop().animate({height: slideHeight }, 300, createMediaPlayer($slide));
     $slide.data('open','true');
-    $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'600px'}, 300);
+    $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height: slideHeight}, 300);
   }
-  else {
+  else { //else slidedown is already open
     $slide.stop().animate({height:'0px'}, 300);
     $slide.data('open','false');
-    var $mediaPlayer = $slide.children('.slidedown-content').children('.media-player');
+    var $mediaPlayer = $slide.children('.row').children('.column').children('.media-box').children('.media-player');
     $mediaPlayer.html("");
     $(this).parent().parent().parent().children('.slidedown-spacer').stop().animate({height:'0px'}, 300);
     
@@ -163,7 +170,7 @@ $('.glyphicon').on('click', function() {
 
 
 
-$(document).on('click', ".video-thumbnail", function(e) {
+$(document).on('click', ".video-thumbnail" , function(e) {
   console.log("cliked on video thumnail");
   e.preventDefault();
   var media = "<iframe width='100%' height='100%' src='http://www.youtube.com/embed/" 
@@ -184,7 +191,26 @@ $(document).on('click', ".video-thumbnail", function(e) {
   }
 });
 
-
+// $(document).on('click', ".mediaplayer-video-thumbnail", function(e) {
+//   console.log("cliked on video thumnail");
+//   e.preventDefault();
+//   var media = "<iframe width='100%' height='100%' src='http://www.youtube.com/embed/" 
+//               + $(this).attr('data')
+//               + "?rel=0&autohide=1&controls=0&showinfo=0&autoplay=1' frameborder='0' allowfullscreen></iframe>";
+//   console.log($(this));
+//   console.log(media);
+//   console.log("this.parent")
+//   console.log($(this).parent());
+//   if ($(this).parent().is('.media-player')) {
+//     console.log("my mother is a media player! :D ")
+//     $(this).parent().html(media);
+//   }
+//   else {
+//     console.log("my mama is a lama")
+//     console.log($(this).parent().parent().parent().parent().children('.media-player'));
+//     $(this).parent().parent().parent().parent().children('.media-player').html(media);
+//   }
+// });
 
 
 
@@ -262,6 +288,10 @@ $(window).scroll(function(){
 // 	}
 // );
 
+
+$('.popoverOption').popover({ trigger: "hover" });
+
+
 var slidedownPosition = function() {
   var $row = $('.my-images').children('.row');
   var posTop = $row.offset().top + $row.height();
@@ -271,7 +301,26 @@ var slidedownPosition = function() {
   // $('.slidedown').width($('.slidedown').parent().parent().parent().width);
   var rowWidth = $('.slidedown').parent().parent().width();
   $('.slidedown').width(rowWidth);
-}
+
+  //get the desired slide height
+  var $slide = $(this).parent().children('.slidedown');
+  var slideHeight;
+  if($(window).width() >= 980) {
+    slideHeight = 560;
+  }
+  else {
+    slideHeight = 1120;
+  }
+
+  //check each slidedown fo find the open one and readjust the slide and spacer height
+  $('.slidedown').each( function() {
+    if ( $(this).data('open') == 'true') {
+      console.log($(this));
+      $(this).height(slideHeight + 'px');
+      $('.slidedown-spacer').height(slideHeight + 'px');
+    }
+  });
+} // end slidedown position
 
 var centerTitle = function() {
   // var centerSpot = (($(window).width()/2) - ($('#title-text').width()/2)) + 'px');
