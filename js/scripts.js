@@ -90,7 +90,7 @@ $(function(){
     //create media player
     console.log(mediaBox);
     var $mediaPlayer = mediaBox.children('.row').children('.column').children('.media-box').children('.media-player');
-    var $firstMedia = mediaBox.children('.row').children('.column').children('.media-box').children('.scroll-thing').children('.middle-scroll').children().first().children().first();
+    var $firstMedia = mediaBox.children('.row').children('.column').children('.media-box').children('.scroll-thing').children('.middle-scroll').children('.middle-scroll-inner').children().first().children().first();
     if ( $firstMedia.is('div')) {
       console.log("its a videao");
       var videoID = $firstMedia.attr('data');
@@ -122,7 +122,7 @@ $('.invis-shield').on( 'click', function() {
   
   if( $slide.data('open') == 'false'){ //if slidedown is not open
     var slideHeight;
-    if($(window).width() >= 980) {
+    if($(window).width() >= 974) {
       slideHeight = 560;
     }
     else {
@@ -148,24 +148,24 @@ $('.invis-shield').on( 'click', function() {
 
 // scroller arrows
 $('.left-side-arrow').on('click', function() {
-  var $scroller = $(this).parent().children('.middle-scroll');
+  var $scroller = $(this).parent().children('.middle-scroll').children('.middle-scroll-inner');
   $scroller.stop().animate( {
     scrollLeft: $scroller.scrollLeft() - 200
   });
 });
 $('.right-side-arrow').on('click', function() {
-  var $scroller = $(this).parent().children('.middle-scroll');
+  var $scroller = $(this).parent().children('.middle-scroll').children('.middle-scroll-inner');
   $scroller.stop().animate( {
     scrollLeft: $scroller.scrollLeft() + 200
   });
 });
 
-$('.media-player').on('click', function() {
-  console.log("clicked on mediaplayer");
-});
-$('.glyphicon').on('click', function() {
-  console.log("clicked on glyphicon");
-});
+// $('.media-player').on('click', function() {
+//   console.log("clicked on mediaplayer");
+// });
+// $('.glyphicon').on('click', function() {
+//   console.log("clicked on glyphicon");
+// });
 
 
 
@@ -186,8 +186,8 @@ $(document).on('click', ".video-thumbnail" , function(e) {
   }
   else {
     console.log("my mama is a lama")
-    console.log($(this).parent().parent().parent().parent().children('.media-player'));
-    $(this).parent().parent().parent().parent().children('.media-player').html(media);
+    console.log($(this).parent().parent().parent().parent().parent().children('.media-player'));
+    $(this).parent().parent().parent().parent().parent().children('.media-player').html(media);
   }
 });
 
@@ -219,8 +219,8 @@ $('.thumb-scroller-forcefield').on('click', function(e) {
   var media = $(this).parent().children('img').attr('data');
   console.log($(this));
   console.log(media);
-  console.log($(this).parent().parent().parent().parent().children('.media-player'));
-  $(this).parent().parent().parent().parent().children('.media-player').html(media);
+  console.log($(this).parent().parent().parent().parent().parent().children('.media-player'));
+  $(this).parent().parent().parent().parent().parent().children('.media-player').html(media);
 });
 
 
@@ -305,7 +305,7 @@ var slidedownPosition = function() {
   //get the desired slide height
   var $slide = $(this).parent().children('.slidedown');
   var slideHeight;
-  if($(window).width() >= 980) {
+  if($(window).width() > 974) {
     slideHeight = 560;
   }
   else {

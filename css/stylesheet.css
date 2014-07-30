@@ -86,41 +86,67 @@ object does not take up space in its container)*/
 /* image thumbnail scrollbar */
 	.scroll-thing {
 		height: 100px;
+		max-height: 100px;
+		min-height: 100px;
 		font-size: 0;	/* remove spaces between inline div elements */
 		position: relative;
+		display: table;
+		width: 100%;
 	}
 	.side-arrow {
-		display: inline-block; /* allows divs to align horizontally */
-		height: 100px;
-		width: 1.1em;	/* give a width to cover the chevron width*/
 		position: relative;
 		vertical-align: top; /* gets rid of hanger space under 
 								inline-block elements*/
 		background-color: #fff;
 		color: #aaa;
 		font-size: 24pt;
+
+		height: 100%;
+		width: 1.1em;
+		min-width: 1.1em;
+		max-width: 1.1em;
+		display: table-cell;
 	}
 	.side-arrow > .glyphicon {
-		position: absolute;	/* position the chevrons manually */
-		top: 50%;	/* start halfway from the top of its container */
-		margin-top: -0.5em;	/* move it back up by ~ half the 
-							   chevron's height */
+		position: absolute;	 /*position the chevrons manually */
+		top: 50%;	 /*start halfway from the top of its container*/ 
+		margin-top: -0.5em;	 /*move it back up by ~ half the 
+							   chevron's height*/ 
 	}
 	.side-arrow:hover {
 		color: #222;
 	}
 
 	.middle-scroll {
-		display: inline-block;
-		height: 100%;
-		width: 85%;
-		overflow: scroll;
-		white-space: nowrap;
 		font-size: 24pt;
-		vertical-align: top; /* gets rid of hanger space under 
+		/*vertical-align: top;*/ /* gets rid of hanger space under 
 								inline-block elements*/
+		height: 100%;
+		width: 100%;
+		max-width: 100px;
+		min-width: 100%;
+		display: table-cell;
+		white-space: nowrap;
 	}
-	.middle-scroll::-webkit-scrollbar { /* hide the scrollbar */
+	.middle-scroll-inner {
+		overflow-x: scroll;
+		position: relative;
+		overflow-y: hidden;
+		height:100%;
+	}
+	.middle-scroll-inner > * {
+		display: inline-block;
+		height:100%;
+	}
+	/*@media (max-height: 500px) {
+		.middle-scroll {
+			width: 75%;
+		}
+		.side-arrow {
+			width: 15%;
+		}
+	}*/
+	.middle-scroll-inner::-webkit-scrollbar { /* hide the scrollbar */
 	    display: none; 
 	}
 	
@@ -133,13 +159,53 @@ object does not take up space in its container)*/
 		z-index: 3;
 		cursor: pointer;
 	}
-	.middle-scroll > div {
+	.middle-scroll-inner > div {
 		display: inline-block;
 		height: 100%;
 		position: relative;
 	} 
-	.middle-scroll > div > img {
+	.middle-scroll-inner img {
+		height: 100px;
+	}
+
+
+
+	#secion4 {
+		position: relative;
+	}
+	.test {
+		height: 100px;
+		display: table;
+		width: 100%;
+	}
+	.test-middle {
+		/*background-color: #cfc;*/
 		height: 100%;
+		width: 100%;
+		max-width: 100px;
+		min-width: 100%;
+		display: table-cell;
+		white-space: nowrap;
+		/*overflow: scroll;*/
+	}
+	.test-inner-middle {
+		overflow-x: scroll;
+
+	}
+	.test-inner-middle > * {
+		display: inline-block;
+	}
+	.test-side {
+		background-color: #fcf;
+		height: 100%;
+		width: 1.1em;
+		min-width: 1.1em;
+		max-width: 1.1em;
+		display: table-cell;
+		border: solid 2px #d22;
+	}
+	.test-inner-middle::-webkit-scrollbar { /* hide the scrollbar */
+	    display: none; 
 	}
 
 
@@ -570,22 +636,36 @@ object does not take up space in its container)*/
 	}
 
 	.elevator-pitch {
-		height: 235px;
+		height: 285px;
 		/*width: 100%;*/
 		margin: 30px 30px;
 		background-color: #fff;
 		box-shadow: 5px 5px 5px #888;
+		text-align: center;
 	}
 
 	.stores {
-		height: 235px;
+		height: 185px;
 		/*width: 100%;*/
 		margin: 30px 30px;
 		background-color: #fff;
 		box-shadow: 5px 5px 5px #888;
+		/*position: relative;*/
+	}
+	.stores > div {
+		display: table;
+		height: 100%;
+		width: 100%;
+	}
+	.stores > div > div {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
 	}
 
-	@media (min-width: 980px) {
+	
+
+	@media (min-width: 992px) {
 		.elevator-pitch {
 			margin-left: 0px;
 			padding: 0.5em;
@@ -600,10 +680,61 @@ object does not take up space in its container)*/
 	}
 
 
+
+	@media (max-width: 600px) {
+		/*.circle {
+			height: 80px;
+			width: 80px;
+		}*/
+		.elevator-pitch > .popoverOption {
+			padding: 0px;
+		}
+	}
+
+
+
+
+
 #section4 {
 	width: 100%;
-	height: 800px;
+	/*height: 800px;*/
 }
+
+.quote {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	text-align: center;
+	position: relative;
+}
+.transparent-quote {
+	font-size: 70pt;
+	position: absolute;
+	top: 50px;
+	left: 270px;
+	white-space: nowrap;
+}
+.blue-text-box {
+	background-color: #20abdf;
+}
+.next-section {
+	height: 300px;
+
+	background-color: #9f9;
+	text-align: center;
+}
+.centered-table {
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+.centered-table > div {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+
+
 
 
 
