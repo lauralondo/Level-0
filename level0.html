@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>test</title>
@@ -27,6 +28,11 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
     <!-- our custom css stylesheet -->
     <link href="css/stylesheet.css" rel="stylesheet">
+
+    <!-- slide transition links -->
+    <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
+    <link href="fasw.transitions_1.4/Source/transition.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="fasw.transitions_1.4/Source/fasw.transitions.js"></script>
   </head>
 
 
@@ -36,7 +42,23 @@
 
 
   <body>
+    <script type="text/javascript">
+      (function inittrans() 
+      {
+        var params =  //All params are optional, you can just assign {} 
+          { 
+            "navB" : "slide reverse", //Effect for navigation button, leave it empty to disable it
+            "but" : true,       //Flag to enable transitions on button, false by default
+            "cBa" : onTransitionFinished // function() { alert("Done!"); }  //callback function
+          };
+        new ft(params);
+      })();
 
+      function onTransitionFinished()
+      {
+        //Do anything you want 
+      }
+    </script>
 
 
       <!-- Static navbar -->
@@ -696,7 +718,7 @@
             </div>
           </a><br> -->
  
-          
+          <a data-ftrans="slide" href="slide2.html">Next</a><br /><br/>
           
         </div> <!-- end section 4 -->
       </div> <!-- end sections -->
