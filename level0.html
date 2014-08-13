@@ -29,10 +29,6 @@
     <!-- our custom css stylesheet -->
     <link href="css/stylesheet.css" rel="stylesheet">
 
-    <!-- slide transition links -->
-    <!-- <link href="css/style.css" rel="stylesheet" type="text/css"/> -->
-    <link href="fasw.transitions_1.4/Source/transition.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="fasw.transitions_1.4/Source/fasw.transitions.js"></script>
   </head>
 
 
@@ -42,23 +38,7 @@
 
 
   <body>
-    <script type="text/javascript">
-      (function inittrans() 
-      {
-        var params =  //All params are optional, you can just assign {} 
-          { 
-            "navB" : "slide reverse", //Effect for navigation button, leave it empty to disable it
-            "but" : true,       //Flag to enable transitions on button, false by default
-            "cBa" : onTransitionFinished // function() { alert("Done!"); }  //callback function
-          };
-        new ft(params);
-      })();
-
-      function onTransitionFinished()
-      {
-        //Do anything you want 
-      }
-    </script>
+    
 
 
       <!-- Static navbar -->
@@ -718,7 +698,7 @@
             </div>
           </a><br> -->
  
-          <a data-ftrans="slide" href="slide2.html">Next</a><br /><br/>
+          <a data-ftrans="slide" href="page2.html">Next</a><br /><br/>
           
         </div> <!-- end section 4 -->
       </div> <!-- end sections -->
@@ -739,7 +719,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-
+    <!-- our scripts -->
     <script src="js/scripts.js"></script>
 
 

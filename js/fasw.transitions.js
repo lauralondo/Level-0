@@ -95,7 +95,7 @@ function slideTo(href, effect, pushstate)
 	var d2 = d.d2;
 	aDL(href, d2, 
 			function() {
-				// if (pushstate && window.history.pushState) window.history.pushState("", "", href);
+				if (pushstate && window.history.pushState) window.history.pushState("", "", href);
 				timeOuts(effect,d1,d2);
 			}
 	);
