@@ -707,11 +707,14 @@ object does not take up space in its container)*/
 	position: relative;
 }
 .transparent-quote {
-	font-size: 70pt;
+	font-size: 400pt;
 	position: absolute;
-	top: 50px;
-	left: 270px;
+	top: -150px;
+	left: 100px;
 	white-space: nowrap;
+	color: #ddd;
+	font-family: 'Times New Roman', times, serif;
+	z-index: -5;
 }
 .blue-text-box {
 	background-color: #20abdf;
