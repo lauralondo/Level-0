@@ -74,9 +74,18 @@ object does not take up space in its container)*/
 	    margin: auto;
 	}
 
+.circle-50 {
+	height: 50px;
+	width: 50px;
+    border-radius: 25px;
+}
 
-
-
+.circle-big {
+	height: 200px;
+	width: 200px;
+    border-radius: 100px;
+	background-color: #5f5;
+}
 
 
 
@@ -719,12 +728,53 @@ object does not take up space in its container)*/
 .blue-text-box {
 	background-color: #20abdf;
 }
-.next-section {
-	height: 300px;
-
-	background-color: #9f9;
+#twitter-section {
+	background-image: url('../img/sdscene.jpg');
+	text-align: center;
+	padding: 50px;
+	color: #ddd;
+}
+#credits-section {
+	background-color: #ddd;
 	text-align: center;
 }
+#credits-section > .row {
+	padding-top: 30px;
+}
+.info-card {
+	background-color: #fff;
+	box-shadow: 5px 5px 5px #888;
+	padding: 20px;
+	margin: 20px;
+	border-radius: 10px;
+	margin-bottom: 50px;
+}
+#other-grey-sentence {
+	color: #999;
+	font-size: 18pt;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+.grey-sentence {
+	color: #999;
+	font-size: 18pt;
+}
+#continue-section {
+	text-align: center;
+}
+.line {
+	height: 2px;
+	margin: 20px;
+	margin-left: 80px;
+	margin-right: 80px;
+	background-color: #ddd;
+}
+
+
+
 .centered-table {
 	width: 100%;
 	height: 100%;
@@ -737,7 +787,7 @@ object does not take up space in its container)*/
 }
 
 
-
+	
 
 
 
