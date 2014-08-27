@@ -725,9 +725,41 @@ object does not take up space in its container)*/
 	font-family: 'Times New Roman', times, serif;
 	z-index: -5;
 }
-.blue-text-box {
-	background-color: #20abdf;
+.explanation-section {
+	background-color: #fff;
+	padding: 50px;
+	/*border-top: solid 1px #ddd;*/
+	margin-bottom: 50px;
 }
+.box-presenter {
+	margin-bottom: 30px;
+}
+.hover-box {
+	border: 1px solid #aaa;
+	margin: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #fff;
+	border-radius: 3px;
+	color: #bbb;
+	font-size: 16pt;
+}
+
+.hover-box:hover {
+	border: 1px solid #222;
+	background-color: #F5FCFF;
+	color: #222;
+}
+.hover-box-picture {
+	text-align: center;
+	vertical-align: middle;
+	/*margin-left: 10px;*/
+	/*background-color: #20abdf;*/
+}
+
 #twitter-section {
 	background-image: url('../img/sdscene.jpg');
 	text-align: center;
@@ -737,6 +769,7 @@ object does not take up space in its container)*/
 #credits-section {
 	background-color: #ddd;
 	text-align: center;
+	padding-top: 50px;
 }
 #credits-section > .row {
 	padding-top: 30px;

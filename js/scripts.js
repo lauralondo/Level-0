@@ -400,6 +400,12 @@ $('body').on('click', '#lightbox', function() {
 
 
 
+$('.hover-box').on('mouseover', function() {
+  var picURL = $(this).attr('data');
+  var image = "<img src='" + picURL + "' />";
+  $(this).parent().parent().children('.hover-box-picture').html(image);
+});
+
 
 //on document load
 jQuery(document).ready(function($) {
