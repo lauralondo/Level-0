@@ -401,9 +401,9 @@ $('body').on('click', '#lightbox', function() {
 
 
 $('.hover-box').on('mouseover', function() {
-  var picURL = $(this).attr('data');
-  var image = "<img src='" + picURL + "' />";
-  $(this).parent().parent().children('.hover-box-picture').html(image);
+  var newContent = $(this).attr('data');
+  // var image = "<img src='" + picURL + "' />";
+  $(this).parent().parent().children('.hover-box-picture').html(newContent);
 });
 
 
